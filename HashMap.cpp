@@ -4,7 +4,6 @@
 #include "HashMap.hpp"
 
 
-
 namespace 
 {
     unsigned int ascii_hash(const std::string& s)
@@ -22,6 +21,20 @@ namespace
 
 HashMap::HashFunction hash_it = ascii_hash;
 
+
+HashMap::HashMap()
+    : Buckets{new Node[HashMap::INITIAL_BUCKET_COUNT]}
+{
+
+}
+
+
+
+
+HashMap::~HashMap()
+{
+    delete[] Buckets;
+}
 unsigned int GetHash(std::string& s, HashMap::HashFunction)
 {
     int hash = ascii_hash(s);

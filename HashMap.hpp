@@ -160,6 +160,9 @@ private:
 
     // You will no doubt need to add at least a few more private members
     Node* head = nullptr;
+
+    // Static array of buckets
+    Node* Buckets;
 };
 
 
