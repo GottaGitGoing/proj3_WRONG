@@ -26,7 +26,7 @@
 #include <functional>
 #include <string>
 
-
+unsigned int GetHash(std::string s);
 
 class HashMap
 {
@@ -134,6 +134,9 @@ public:
     // maxBucketSize() returns the number of key/value pairs stored in this
     // HashMap's largest bucket.
     unsigned int maxBucketSize() const;
+
+    // This is the getHash Function that gets a 
+    // unsigned int GetHash(std::string s) const;
 
 
 private:
