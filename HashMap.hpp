@@ -26,7 +26,7 @@
 #include <functional>
 #include <string>
 
-unsigned int GetHash(std::string s);
+
 
 class HashMap
 {
@@ -123,7 +123,7 @@ public:
     // this HashMap.
     unsigned int bucketCount() const;
     
-
+    unsigned int GetHash(std::string& s);
 
     // loadFactor() returns the proportion of the number of key/value pairs
     // to the number of buckets, a measurement of how "full" the HashMap is.

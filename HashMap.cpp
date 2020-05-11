@@ -1,5 +1,6 @@
 // HashMap.cpp
 #include <string>
+#include <iostream>
 #include "HashMap.hpp"
 
 
@@ -19,11 +20,11 @@ namespace
     }
 }
 
-
 HashMap::HashFunction hash_it = ascii_hash;
 
-unsigned int GetHash(std::string s)
+unsigned int GetHash(std::string& s, HashMap::HashFunction)
 {
     int hash = ascii_hash(s);
     return hash;
 }
+
