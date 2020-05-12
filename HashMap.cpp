@@ -17,27 +17,56 @@ namespace
         }
         return hash_value;
     }
+
 }
 
-HashMap::HashFunction hash_it = ascii_hash;
+HashMap::HashFunction def_hash = ascii_hash;
 
 
 HashMap::HashMap()
-    : Buckets{new Node[HashMap::INITIAL_BUCKET_COUNT]}
+    : hashFunction{def_hash}, Buckets{new Node*[HashMap::INITIAL_BUCKET_COUNT]}
+    , sz{0}, cap{INITIAL_BUCKET_COUNT}
 {
+    for (unsigned int i=0; i< HashMap::bucketCount(); ++i)
+    {
+        Buckets[i] = nullptr;
+    }
+}
 
+HashMap::HashMap(HashMap::HashFunction hashFunction)
+    :Buckets{new Node*[HashMap::INITIAL_BUCKET_COUNT]}
+    , sz{0}, cap{INITIAL_BUCKET_COUNT}
+{
+    def_hash = hashFunction;
 }
 
 
+HashMap::HashMap(const HashMap& hm)
+   : Buckets{new Node*[hm.cap]}, sz{hm.sz}, cap{hm.cap}
+{
+
+}
 
 
 HashMap::~HashMap()
 {
+    for (unsigned int i=0;i < HashMap::bucketCount();++i)
+    {
+        delete Buckets[i];
+    }
     delete[] Buckets;
 }
-unsigned int GetHash(std::string& s, HashMap::HashFunction)
+
+
+unsigned int HashMap::bucketCount() const
 {
-    int hash = ascii_hash(s);
+    return cap;
+}
+
+
+unsigned int GetHash(std::string& s, HashMap::HashFunction hasher )
+{
+    int hash = def_hash(s);
     return hash;
 }
 

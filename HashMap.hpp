@@ -157,12 +157,16 @@ private:
     // function.
     HashFunction hashFunction;
 
+    // array of buckets
+    Node** Buckets;
 
     // You will no doubt need to add at least a few more private members
     Node* head = nullptr;
 
-    // Static array of buckets
-    Node* Buckets;
+    unsigned int sz;
+    unsigned int cap;
+
+    
 };
 
 
